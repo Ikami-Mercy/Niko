@@ -13,16 +13,15 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import java.util.ArrayList
 
 class MapViewActivity : AppCompatActivity() {
-    private var coordinates: String? = null
-    private var coordinatesLong: Double? = null
-    private var coordinatesLat: Double? = null
+    private var coordinatesLong: String? = null
+    private var coordinatesLat: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_view)
         val extras = intent.extras
-        coordinatesLong = extras?.getDouble("coordinatesLong")
-        coordinatesLat = extras?.getDouble("coordinatesLat")
+        coordinatesLong = extras?.getString("coordinatesLong")
+        coordinatesLat = extras?.getString("coordinatesLat")
 
 
         //val longitude = lines[0].split(":".toRegex()).dropLastWhile({ it.isEmpty() })
@@ -33,11 +32,14 @@ class MapViewActivity : AppCompatActivity() {
         Log.e("latitude %s" , latitude.toString())
 
         mapview_item.setTileSource(TileSourceFactory.MAPNIK)
-        mapview_item.setBuiltInZoomControls(false)
+        mapview_item.setBuiltInZoomControls(true)
         mapview_item.setMultiTouchControls(false)
         val mapController = mapview_item.getController()
         mapController.setZoom(18.0)
-        val startPoint = longitude?.let { latitude?.let { it1 -> GeoPoint(it1, it) } }
+        val startPoint = GeoPoint(
+            java.lang.Double.parseDouble(latitude.toString()!!),
+            java.lang.Double.parseDouble(longitude.toString()!!)
+        )
         mapController.setCenter(startPoint)
         val overlayItems = ArrayList<OverlayItem>()
         val myLocationOverlayItem = OverlayItem("Here", "Current Position", startPoint)
