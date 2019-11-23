@@ -28,12 +28,10 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LocationListener {
 
-
-    private var niko_btn: ImageView? = null
-    private var niko_et: EditText? = null
     private val locationManager: LocationManager? = null
     private val locationListener: LocationListener? = null
     private val context: Context? = null
@@ -47,15 +45,15 @@ class MainActivity : AppCompatActivity(), LocationListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        niko_btn = findViewById(R.id.niko_btn)
-       // niko_et = findViewById(R.id.niko_et)
-        //niko_btn.setOnClickListener(View.OnClickListener { fetchLocation() })
+
+        niko_btn.setOnClickListener(View.OnClickListener {
+            fetchLocation() })
 
 
 
     }
     private fun fetchLocation() {
-        if (!checkLocationPermission()) return
+        if (!checkLocationPermission())
 
 
         if (locationManager != null) {
