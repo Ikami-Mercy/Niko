@@ -65,6 +65,7 @@ public class testActivity extends AppCompatActivity implements LocationListener 
                 fetchLocation();
             }
         });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

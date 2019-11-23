@@ -68,10 +68,15 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                 dialog.setTitle("Location")
                                 dialog.setMessage("Loading your location \uD83D\uDE42")
                             }
+                            var coordinatesLong: String? = null
+                            var coordinatesLat: String? = null
                             var coordinates: String? = null
                             try {
                                 coordinates =
-                                    "Longitude: " + location.longitude + "  \nLatitude: " + location.latitude.toString()
+                                    "Longitude: " + location.longitude + "," + " Latitude: " + location.latitude.toString()
+
+                                coordinatesLong =location.longitude.toString()
+                                coordinatesLat =location.latitude.toString()
                             } catch (e: Exception) {
                                 e.printStackTrace()
                             }
@@ -79,7 +84,11 @@ class MainActivity : AppCompatActivity(), LocationListener {
                             Log.e("## Fetched location: %s", coordinates)
 
                             niko_et.setText(coordinates)
-
+                            val intent = Intent(this, MapViewActivity::class.java)
+                            Log.e("MapView", "Called")
+                            intent.putExtra("coordinatesLong", coordinatesLong)
+                            intent.putExtra("coordinatesLat", coordinatesLat)
+                            startActivity(intent)
 
 
                                 dialog?.dismiss()
