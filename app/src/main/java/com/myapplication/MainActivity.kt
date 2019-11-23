@@ -11,26 +11,20 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.myapplication.PermissionUtils.PermissionsListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LocationListener {
@@ -85,6 +79,8 @@ class MainActivity : AppCompatActivity(), LocationListener {
                             Log.e("## Fetched location: %s", coordinates)
 
                             niko_et.setText(coordinates)
+
+
 
                                 dialog?.dismiss()
 
