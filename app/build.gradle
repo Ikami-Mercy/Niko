@@ -37,12 +37,13 @@ dependencies {
 
     // Permissions
     implementation 'com.karumi:dexter:5.0.0'
+
     implementation 'com.google.android.gms:play-services-location:15.0.1'
 
     // Open Street Maps
     implementation 'org.osmdroid:osmdroid-android:6.0.0'
-    implementation 'org.osmdroid:osmdroid-wms:6.0.0'
+  /*  implementation 'org.osmdroid:osmdroid-wms:6.0.0'
     implementation 'org.osmdroid:osmdroid-mapsforge:6.0.0'
     implementation 'org.osmdroid:osmdroid-geopackage:6.0.0'
-    implementation 'org.osmdroid:osmdroid-third-party:6.0.0'
+    implementation 'org.osmdroid:osmdroid-third-party:6.0.0'*/
 }
