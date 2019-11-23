@@ -89,7 +89,7 @@ public class testActivity extends AppCompatActivity implements LocationListener 
 
     }
     private void fetchLocation() {
-        if (!checkLocationPermission()) return;
+        if (!checkLocationPermission())
 
 
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
@@ -204,6 +204,7 @@ public class testActivity extends AppCompatActivity implements LocationListener 
 
         return granted[0];
     }
+
 
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

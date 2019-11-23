@@ -108,8 +108,8 @@ object PermissionUtils {
 
                         showPermissionsDeniedDialog(
                             activity,
-                            "Storage Permissions",
-                            "Storage permissions are needed to read and write files"
+                            "Location Permissions",
+                            "Location permissions are needed to show you your current coordinates"
                         )
 
                     } else

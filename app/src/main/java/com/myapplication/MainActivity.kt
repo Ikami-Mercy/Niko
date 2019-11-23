@@ -14,11 +14,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
@@ -28,63 +30,70 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.myapplication.PermissionUtils.PermissionsListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LocationListener {
 
-    private val locationManager: LocationManager? = null
+    private var locationManager: LocationManager? = null
     private val locationListener: LocationListener? = null
     private val context: Context? = null
     private val SELECT_LOCATION = 8
     private val dialog: ProgressDialog? = null
-    internal var locationProviderClient: FusedLocationProviderClient? = null
+    private var locationProviderClient: FusedLocationProviderClient? = null
     private var coordinates: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        locationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         niko_btn.setOnClickListener(View.OnClickListener {
-            fetchLocation() })
-
+            fetchLocation()
+        })
 
 
     }
+
     private fun fetchLocation() {
         if (!checkLocationPermission())
 
 
-        if (locationManager != null) {
-            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(
-                    LocationManager.NETWORK_PROVIDER
-                )
-            ) {
-                buildAlertMessageNoGps()
-            } else {
-                locationProviderClient?.getLastLocation()?.addOnSuccessListener { location ->
-                    if (location != null) {
-                        var coordinates: String? = null
-                        try {
-                            coordinates =
-                                "Longitude: " + location.longitude + "  \nLatitude: " + location.latitude.toString()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-
-
-                        niko_et?.setText(coordinates)
-                        if (dialog != null) {
-                            if (dialog.isShowing()) {
-                                dialog.dismiss()
+            if (locationManager != null) {
+                if (!locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager!!.isProviderEnabled(
+                        LocationManager.NETWORK_PROVIDER
+                    )
+                ) {
+                    buildAlertMessageNoGps()
+                } else {
+                    locationProviderClient?.lastLocation?.addOnSuccessListener { location ->
+                        if (location != null) {
+                            if (dialog != null) {
+                                dialog.setCancelable(false)
+                                dialog.setTitle("Location")
+                                dialog.setMessage("Loading your location \uD83D\uDE42")
                             }
+                            var coordinates: String? = null
+                            try {
+                                coordinates =
+                                    "Longitude: " + location.longitude + "  \nLatitude: " + location.latitude.toString()
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+
+                            Log.e("## Fetched location: %s", coordinates)
+
+                            niko_et.setText(coordinates)
+
+                                dialog?.dismiss()
+
                         }
                     }
                 }
             }
-        }
     }
+
 
     private fun checkLocationPermission(): Boolean {
         val granted = booleanArrayOf(false)
@@ -101,13 +110,13 @@ class MainActivity : AppCompatActivity(), LocationListener {
                         DialogOnAnyDeniedMultiplePermissionsListener.Builder
                             .withContext(this@MainActivity)
                             .withTitle("Location permission")
-                            .withMessage("Location permissions are required to send location")
+                            .withMessage("Location permission is required to get your location")
                             .withButtonText(android.R.string.ok)
                             .build()
                     } else if (report.areAllPermissionsGranted()) {
 
                         if (locationManager != null) {
-                            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(
+                            if (!locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager!!.isProviderEnabled(
                                     LocationManager.NETWORK_PROVIDER
                                 )
                             ) {
@@ -119,7 +128,8 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                         applicationContext,
                                         Manifest.permission.ACCESS_FINE_LOCATION
                                     ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                                        applicationContext, Manifest.permission.ACCESS_COARSE_LOCATION
+                                        applicationContext,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION
                                     ) != PackageManager.PERMISSION_GRANTED
                                 ) {
                                     // TODO: Consider calling
@@ -133,17 +143,17 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                 }
 
                                 if (dialog != null) {
-                                    dialog.show()
+                                    dialog.setCancelable(false)
+                                    dialog.setTitle("Location")
+                                    dialog.setMessage("Loading your location \uD83D\uDE42")
                                 }
-                                locationProviderClient?.getLastLocation()
+                                locationProviderClient?.lastLocation
                                     ?.addOnSuccessListener { location ->
                                         if (dialog != null) {
                                             dialog.setCancelable(false)
                                         }
 
                                         if (location != null) {
-                                            //                                        dialog.dismiss();
-                                            coordinates = null
                                             try {
                                                 coordinates =
                                                     "Longitude: " + location.longitude + "  \nLatitude: " + location.latitude.toString()
@@ -153,7 +163,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
 
                                             // Pass the coordinates to the Map View.
                                             if (dialog != null) {
-                                                if (dialog.isShowing()) {
+                                                if (dialog.isShowing) {
                                                     dialog.dismiss()
                                                 }
                                             }
@@ -162,7 +172,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                         //                                        dialog.dismiss();
                                         niko_et?.setText(coordinates)
                                         if (dialog != null) {
-                                            if (dialog.isShowing()) {
+                                            if (dialog.isShowing) {
                                                 dialog.dismiss()
                                             }
                                         }
@@ -178,7 +188,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                     if (report.isAnyPermissionPermanentlyDenied) {
                         // permission is denied permenantly, navigate user to app settings
                         // show alert dialog navigating to Settings
-                        showSettingsDialog()
+                        //  showSettingsDialog()
                     }
                 }
 
@@ -198,12 +208,12 @@ class MainActivity : AppCompatActivity(), LocationListener {
         builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
             .setCancelable(false)
             .setPositiveButton("Yes") { dialg, id ->
-                //                        dialog.setMessage("Getting co-ordinates, please wait.");
-                //                        dialog.show();
+
                 startActivityForResult(
                     Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS),
                     SELECT_LOCATION
                 )
+
             }
             .setNegativeButton(
                 "No"
@@ -211,23 +221,25 @@ class MainActivity : AppCompatActivity(), LocationListener {
         val alert = builder.create()
         alert.show()
     }
-        private fun showSettingsDialog() {
-val builder = AlertDialog.Builder(this@MainActivity)
-builder.setTitle("Need Permissions")
-builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.")
-builder.setPositiveButton("GOTO SETTINGS"
-) { dialog, which ->
-    dialog.cancel()
-    openSettings()
-}
-            builder.setNegativeButton("Cancel", object:DialogInterface.OnClickListener {
-override fun onClick(dialog:DialogInterface, which:Int) {
-dialog.cancel()
-}
-})
-builder.show()
 
-}
+    private fun showSettingsDialog() {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle("Permissions")
+        builder.setMessage("This app needs this permission to use this feature. You can grant them in app settings.")
+        builder.setPositiveButton(
+            "GOTO SETTINGS"
+        ) { dialog, which ->
+            dialog.cancel()
+            openSettings()
+        }
+        builder.setNegativeButton("Cancel", object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface, which: Int) {
+                dialog.cancel()
+            }
+        })
+        builder.show()
+
+    }
 
 
     // navigating user to app settings
@@ -237,6 +249,7 @@ builder.show()
         intent.data = uri
         startActivityForResult(intent, 101)
     }
+
     override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
