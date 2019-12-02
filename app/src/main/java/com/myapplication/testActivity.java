@@ -69,17 +69,17 @@ public class testActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onLocationChanged(Location location) {
-
+      Log.e("LocationChanged " , "CALLED@#")
     }
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
-
+    Log.e("StatusChanged " , s)
     }
 
     @Override
     public void onProviderEnabled(String s) {
-  Log.e("ProviderEnabled " , s)
+     Log.e("ProviderEnabled " , s)
     }
 
     @Override
