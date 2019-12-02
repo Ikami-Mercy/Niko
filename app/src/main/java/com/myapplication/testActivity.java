@@ -213,7 +213,7 @@ public class testActivity extends AppCompatActivity implements LocationListener 
                     public void onClick(final DialogInterface dialg, final int id) {
 //                        dialog.setMessage("Getting co-ordinates, please wait.");
 //                        dialog.show();
-                        startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), SELECT_LOCATION);
+                        startActivityForResult(new Intent(ACTION_LOCATION_SOURCE_SETTINGS), SELECT_LOCATION);
 
                     }
                 })
