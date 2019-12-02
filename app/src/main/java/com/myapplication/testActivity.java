@@ -40,7 +40,6 @@ public class testActivity extends AppCompatActivity implements LocationListener 
     private ImageView niko_btn;
     private EditText niko_et;
     private LocationManager locationManager;
-    private LocationListener locationListener;
     private static final int SELECT_LOCATION = 8;
     private ProgressDialog dialog;
     FusedLocationProviderClient locationProviderClient;
