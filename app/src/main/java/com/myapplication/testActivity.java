@@ -42,7 +42,7 @@ public class testActivity extends AppCompatActivity implements LocationListener 
     private LocationManager locationManager;
     private static final int SELECT_LOCATION = 8;
     private ProgressDialog dialog;
-    FusedLocationProviderClient locationProviderClient;
+    private FusedLocationProviderClient locationProviderClient;
     private String coordinates;
 
 
