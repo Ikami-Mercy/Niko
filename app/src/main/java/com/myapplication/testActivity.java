@@ -81,12 +81,12 @@ public class testActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onProviderEnabled(String s) {
-
+  Log.e("ProviderEnabled " , s)
     }
 
     @Override
     public void onProviderDisabled(String s) {
-
+     Log.e("ProviderDisabled " , s)
     }
     private void fetchLocation() {
         if (!checkLocationPermission())
