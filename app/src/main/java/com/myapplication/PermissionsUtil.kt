@@ -26,6 +26,9 @@ import com.karumi.dexter.listener.single.PermissionListener
 object PermissionUtils {
 
     interface PermissionsListener {
+            /**
+ * Function, which will execute onPermissionRequest.
+ */
         fun onPermissionRequest(granted: Boolean)
     }
 
