@@ -75,7 +75,7 @@ object PermissionUtils {
             .withPermission(Manifest.permission.RECEIVE_SMS)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(response: PermissionGrantedResponse) {
-
+                //granted
                 }
 
                 override fun onPermissionDenied(response: PermissionDeniedResponse) {
