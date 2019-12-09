@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                             try {
                                                 coordinates =
                                                     "Longitude: " + location.longitude + "  \nLatitude: " + location.latitude.toString()
-                                            } catch (e: Exception) {
+                                            } catch (e: IOException) {
                                                 e.printStackTrace()
                                             }
 
