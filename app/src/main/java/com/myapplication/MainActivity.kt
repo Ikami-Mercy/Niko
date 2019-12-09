@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     }
 
     override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.e("onStatusChanged","called");
     }
 
     override fun onProviderEnabled(p0: String?) {
