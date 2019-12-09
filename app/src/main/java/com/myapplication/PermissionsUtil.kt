@@ -22,7 +22,9 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
 
-
+            /**
+ * Class PermissionUtils.
+ */
 object PermissionUtils {
 
     interface PermissionsListener {
