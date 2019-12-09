@@ -11,7 +11,9 @@ import org.osmdroid.views.overlay.OverlayItem
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import java.util.ArrayList
-
+    /**
+ * MapViewActivity to show the location.
+ */
 class MapViewActivity : AppCompatActivity() {
     private var coordinatesLong: String? = null
     private var coordinatesLat: String? = null
