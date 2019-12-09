@@ -27,6 +27,10 @@ import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsList
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+    /**
+ * The MainActivity.
+ */
 class MainActivity : AppCompatActivity(), LocationListener {
 
     private var locationManager: LocationManager? = null
