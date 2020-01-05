@@ -7,5 +7,5 @@ Get your current location and show it in open street MAPS
 
 
 ### Screenshots
-<img src="ScreenShots/screenone.jpeg" width="200"> <img src="screentwo.jpeg" width="200"> <img src="ScreenShots/2.jpeg" width="200">
+<img src="ScreenShots/screenone.jpeg" width="200"> <img src="ScreenShots/screentwo.jpeg" width="200">
 
