@@ -233,6 +233,7 @@ public class MapActivity extends AppCompatActivity implements MapContract.View {
                 centerMarker.setOnMarkerClickListener((marker, mapView) -> {
                     mapPresenter.getLocation(lat, lon);
                     return true;
+
                 });
 
                 markers.add(centerMarker);

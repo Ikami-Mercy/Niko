@@ -7,5 +7,5 @@ Choose a location and show it in open street MAPS
 
 
 ### Screenshots
-<img src="ScreenShots/screenone.jpeg" width="200"> <img src="ScreenShots/screentwo.jpeg" width="210">
+ <img src="ScreenShots/niko_three.jpeg" width="210"> <img src="ScreenShots/niko_two.jpeg" width="210"> <img src="ScreenShots/niko_one.jpeg" width="200">
 
