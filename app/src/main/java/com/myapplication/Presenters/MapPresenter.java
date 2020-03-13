@@ -1,4 +1,8 @@
-package com.myapplication.maps;
+package com.myapplication.Presenters;
+import com.myapplication.data.ApiClient;
+import com.myapplication.data.ApiService;
+import com.myapplication.data.LocationResponse;
+import com.myapplication.maps.MapContract;
 import com.myapplication.utils.Constants;
 
 import retrofit2.Call;

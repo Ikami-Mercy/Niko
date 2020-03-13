@@ -1,4 +1,4 @@
-package com.myapplication.maps;
+package com.myapplication.Activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,7 +20,10 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.myapplication.Presenters.MapPresenter;
 import com.myapplication.R;
+import com.myapplication.data.LocationResponse;
+import com.myapplication.maps.MapContract;
 import com.myapplication.utils.Constants;
 
 import org.osmdroid.config.Configuration;

@@ -1,4 +1,4 @@
-package com.myapplication.maps;
+package com.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,7 +17,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.myapplication.Presenters.SearchLocationPresenter;
 import com.myapplication.R;
+import com.myapplication.callbacks.SearchLocationListener;
+import com.myapplication.maps.SearchLocation;
+import com.myapplication.maps.SearchLocationAdapter;
+import com.myapplication.maps.SearchLocationContract;
 import com.myapplication.utils.Constants;
 
 import java.util.List;
@@ -53,13 +58,6 @@ public class SearchLocationActivity extends AppCompatActivity implements SearchL
         adapter = new SearchLocationAdapter(this);
         locationsRv.setAdapter(adapter);
 
-//        searchView.addTextChangedListener(new EditTextListener(text -> {
-//            if (!text.isEmpty()) {
-//                setVisible(clear);
-//                search(text);
-//            } else
-//                clear.setVisibility(View.INVISIBLE);
-//        }));
 
         searchView.addTextChangedListener(new TextWatcher() {
             @Override

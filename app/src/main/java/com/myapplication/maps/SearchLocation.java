@@ -1,6 +1,7 @@
 package com.myapplication.maps;
 
 import com.google.gson.annotations.SerializedName;
+import com.myapplication.data.Address;
 
 public class SearchLocation {
     @SerializedName("place_id")

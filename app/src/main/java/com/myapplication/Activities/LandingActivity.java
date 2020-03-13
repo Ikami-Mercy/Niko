@@ -14,7 +14,6 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,12 +28,9 @@ import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsList
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.myapplication.R;
 import com.myapplication.constants.Constants;
-import com.myapplication.maps.LocationResponse;
-import com.myapplication.maps.MapActivity;
+import com.myapplication.data.LocationResponse;
 import com.myapplication.maps.MapContract;
-import com.myapplication.maps.MapPresenter;
-import com.myapplication.utils.GpsUtil;
-import com.myapplication.utils.LocationPermissionUtil;
+import com.myapplication.Presenters.MapPresenter;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;

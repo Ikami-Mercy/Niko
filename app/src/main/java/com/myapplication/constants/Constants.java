@@ -1,12 +1,6 @@
 package com.myapplication.constants;
 
 public class Constants {
-
-    public static final String MAPS_BASE_URL = "https://nominatim.openstreetmap.org/";
-    public static final String MAPS_LOCATION_URL = "reverse";
-    public static final String MAPS_REQUEST_FORMAT = "json";
-    public static final int MAPS_REQUEST_ZOOM = 18;
-    public static final int MAPS_REQUST_ADDRESS_DETAILS = 1;
     public static final Double NAIROBI_LAT = -1.285764;
     public static final Double NAIROBI_LON = 36.825485;
 

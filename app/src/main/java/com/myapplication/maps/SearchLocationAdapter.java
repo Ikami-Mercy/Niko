@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myapplication.R;
+import com.myapplication.callbacks.SearchLocationListener;
 
 import java.util.ArrayList;
 import java.util.List;

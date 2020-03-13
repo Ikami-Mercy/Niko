@@ -1,19 +1,27 @@
 package com.myapplication.data;
 
-import com.myapplication.constants.Constants;
 
+import com.myapplication.maps.RateLimitInterceptor;
+import com.myapplication.utils.Constants;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class ApiClient {
+
 
     /**
      * The method returns the OSM retrofit instance
      */
     public static ApiService getMapsClient() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new RateLimitInterceptor())
+                .build();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.MAPS_BASE_URL)
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

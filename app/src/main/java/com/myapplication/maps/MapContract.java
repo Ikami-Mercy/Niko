@@ -1,5 +1,7 @@
 package com.myapplication.maps;
 
+import com.myapplication.data.LocationResponse;
+
 public interface MapContract {
 
 

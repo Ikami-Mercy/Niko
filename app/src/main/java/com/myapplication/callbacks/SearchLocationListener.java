@@ -1,4 +1,4 @@
-package com.myapplication.maps;
+package com.myapplication.callbacks;
 
 public interface SearchLocationListener {
 

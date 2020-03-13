@@ -1,4 +1,8 @@
-package com.myapplication.maps;
+package com.myapplication.Presenters;
+import com.myapplication.data.ApiClient;
+import com.myapplication.data.ApiService;
+import com.myapplication.maps.SearchLocation;
+import com.myapplication.maps.SearchLocationContract;
 import com.myapplication.utils.Constants;
 
 import java.util.ArrayList;
