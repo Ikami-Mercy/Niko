@@ -3,7 +3,7 @@
 
 
 # Niko
-Get your current location and show it in open street MAPS
+Choose a location and show it in open street MAPS
 
 
 ### Screenshots

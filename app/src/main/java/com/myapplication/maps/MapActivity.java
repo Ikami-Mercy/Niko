@@ -163,8 +163,7 @@ public class MapActivity extends AppCompatActivity implements MapContract.View {
                     .setTitleText("Confirm Location")
                     .setContentText("Set " + location + " as your current location?")
                     .setCustomImage(ContextCompat.getDrawable(this, R.drawable.ic_add_location_black_24dp))
-                    .setConfirmText("CONFIRM")
-                    .setCancelText("CANCEL")
+                    .setConfirmText("OK")
                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
