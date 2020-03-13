@@ -15,8 +15,7 @@ public class Constants {
     public static final String LOCATION_LON_USER = "location_lon_user";
     public static final String LOCATION_NAME_USER = "location_name_user";
     public static final String LOCATION_SEARCH = "location_search";
-    public static final String MEDIA_FILE_PATH = "media_file_path";
-    public static final String FORM_MEDIA = "form_media";
+
 
     public static final String MAPS_BASE_URL = "https://nominatim.openstreetmap.org/";
     public static final String MAPS_LOCATION_URL = "reverse";
@@ -25,5 +24,5 @@ public class Constants {
     public static final int MAPS_REQUEST_ZOOM = 18;
     public static final int MAPS_REQUST_ADDRESS_DETAILS = 1;
     public static final int PICK_SEARCH_LOCATION = 355;
-    public static final int PICK_LOCATION = 325;
+
 }
