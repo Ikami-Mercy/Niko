@@ -3,7 +3,7 @@
 
 
 # Niko
-Choose a location and show it in open street MAPS
+Get and show locations using open street MAPS API.
 
 
 ### Screenshots
